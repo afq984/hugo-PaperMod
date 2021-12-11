@@ -12,6 +12,11 @@
 {{- $scratch.Add "meta" (slice .) }}
 {{- end }}
 
+
+{{- range ($.GetTerms "tags") }}
+{{- $scratch.Add "meta" (slice (printf "#<a href=\"%s\">%s</a>" .Permalink .LinkTitle)) }}
+{{- end }}
+
 {{- with ($scratch.Get "meta") }}
 {{- delimit . "&nbsp;·&nbsp;" -}}
 {{- end -}}
